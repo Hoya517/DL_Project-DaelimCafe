@@ -37,7 +37,7 @@
 	<div class="bar2"></div>
 	<div class="banner">
 		<div class="banner-text">
-			<span><a href="index.jsp">DAELIM UNIV.</a><span>
+			<span><a href="index.jsp">DAELIM UNIV.</a></span>
 		</div>
 	</div>
 	<!--//banner-->
