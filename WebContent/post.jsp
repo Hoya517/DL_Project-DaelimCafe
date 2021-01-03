@@ -94,7 +94,10 @@
             <div class="sidebar-Bar4"></div>
         </div>
         <!--//sidebar-->
-
+		
+		<%
+			new BoardDAO().readCount(vo.get_id());
+		%>
         <div class="post">
             <div class="post-title"><%= vo.getTitle()%></div>
             <div class="post-user">
@@ -115,7 +118,7 @@
 	                							href="deleteAction.jsp?_id=<%= boardId %>">삭제</a></div>
 	                <div class="post-rewrite"><a href="modify_write.jsp?_id=<%= boardId %>">수정</a></div>
             	<% } else { %>
-         		   	<div class="post-rewrite"><a href="index.jsp">목록으로</a></div>
+         		   	<div class="post-rewrite"><a onclick="javascript:history.go(-1);">목록으로</a></div>
             	<% } %>
             </div>
         </div>

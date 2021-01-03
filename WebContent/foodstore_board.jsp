@@ -40,7 +40,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Daelim CAFE</title>
-<link rel="stylesheet" href="./css/index.css" />
+<link rel="stylesheet" href="./css/foodstore_board.css" />
 <link rel="stylesheet" type="text/css" href="./css/font.css">
 </head>
 
@@ -124,7 +124,7 @@
 					<li><a href="free_board.jsp">자유 게시판</a></li>
 					<li><a href="freshman_board.jsp">새내기 게시판</a></li>
 					<li><a href="class_board.jsp">강의평</a></li>
-					<li><a href="foodstore_board.jsp">학교주변 맛집</a></li>
+					<li><a href="foodstore_board.jsp" id="click">학교주변 맛집</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-Bar4"></div>
@@ -132,7 +132,7 @@
 		<!--//sidebar-->
 
 		<div class="list">
-			<div class="list-name">전체 글보기</div>
+			<div class="list-name">필독</div>
 			<div class="list-Bar"></div>
 			<div class="list-title">
 				<ul>
@@ -147,7 +147,7 @@
 			<table class="list-table">
 			<%
 				BoardDAO dao = new BoardDAO();
-				ArrayList<BoardVO> list = dao.getList();
+				ArrayList<BoardVO> list = dao.getList("foodstore_board");
 				totalrows = list.size();
 			    totalpages = (totalrows-1)/maxrows +1;
 			    startrow = (where-1) * maxrows;

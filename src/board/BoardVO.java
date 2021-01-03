@@ -7,6 +7,7 @@ public class BoardVO {
 	private String id;
 	private String date;
 	private String category;
+	private int readcount;
 	
 	public int get_id() {
 		return _id;
@@ -43,6 +44,12 @@ public class BoardVO {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public int getReadcount() {
+		return readcount;
+	}
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
 	}
 	
 }

@@ -40,7 +40,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Daelim CAFE</title>
-<link rel="stylesheet" href="./css/index.css" />
+<link rel="stylesheet" href="./css/cafe_notice.css" />
 <link rel="stylesheet" type="text/css" href="./css/font.css">
 </head>
 
@@ -107,7 +107,7 @@
 				<div class="sidebar-bar2"></div>
 				<ul>
 					<li><a href="read_notice.jsp">필독</a></li>
-					<li><a href="cafe_notice.jsp">카페 공지</a></li>
+					<li><a href="cafe_notice.jsp" id="click">카페 공지</a></li>
 				</ul>
 			</div>
 			<div class="sidebar-Bar3"></div>
@@ -132,7 +132,7 @@
 		<!--//sidebar-->
 
 		<div class="list">
-			<div class="list-name">전체 글보기</div>
+			<div class="list-name">필독</div>
 			<div class="list-Bar"></div>
 			<div class="list-title">
 				<ul>
@@ -147,7 +147,7 @@
 			<table class="list-table">
 			<%
 				BoardDAO dao = new BoardDAO();
-				ArrayList<BoardVO> list = dao.getList();
+				ArrayList<BoardVO> list = dao.getList("cafe_notice");
 				totalrows = list.size();
 			    totalpages = (totalrows-1)/maxrows +1;
 			    startrow = (where-1) * maxrows;
@@ -162,7 +162,7 @@
 					<td class="list-table-title"><a href="post.jsp?_id=<%=list.get(i).get_id()%>"><%=list.get(i).getTitle()%></a></td>
 					<td class="list-table-writer"><%=list.get(i).getId()%></td>
 					<td class="list-table-date"><%=list.get(i).getDate().substring(0, 11)%></td>
-					<td class="list-table-look"><%=list.get(i).getReadcount() %></td>
+					<td class="list-table-look">0</td>
 				</tr>
 			<%
 				}

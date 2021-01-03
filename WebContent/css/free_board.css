@@ -179,6 +179,9 @@ body {
   font-weight: 600;
   text-align: center;
 }
+.list-table-title a{
+  color: #333;
+}
 .list-title ul li:nth-child(1){
   width: 8%;
 }

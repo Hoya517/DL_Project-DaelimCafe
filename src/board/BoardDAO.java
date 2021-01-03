@@ -43,7 +43,7 @@ public class BoardDAO {
 	}
 	
 	public int insert(BoardVO vo) {
-		String SQL = "INSERT INTO `daelimcafe2`.`board` (`title`, `content`, `id`, `date`, `category`) VALUES (?, ?, ?, ?, ?);";
+		String SQL = "INSERT INTO `daelimcafe2`.`board` (`title`, `content`, `id`, `date`, `category`, `readcount`) VALUES (?, ?, ?, ?, ?, ?);";
 		
 		try {
 			pstmt = conn.prepareStatement(SQL);
@@ -52,6 +52,7 @@ public class BoardDAO {
 			pstmt.setString(3, vo.getId());
 			pstmt.setString(4, getDate());
 			pstmt.setString(5, vo.getCategory());
+			pstmt.setInt(6, 0);
 			return pstmt.executeUpdate();
 		}
 		catch(Exception e) {
@@ -61,8 +62,8 @@ public class BoardDAO {
 		return -1;
 	}
 	
-	public ArrayList<BoardVO> getList(int pageNumber) {
-		String SQL = "SELECT * FROM board ORDER BY _iD DESC";
+	public ArrayList<BoardVO> getList() {
+		String SQL = "SELECT * FROM board ORDER BY _id DESC";
 		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -73,6 +74,29 @@ public class BoardDAO {
 				vo.setTitle(rs.getString(2));
 				vo.setId(rs.getString(4));
 				vo.setDate(rs.getString(5));
+				vo.setReadcount(rs.getInt(7));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<BoardVO> getList(String category) {
+		String SQL = "SELECT * FROM board WHERE category = ? ORDER BY _id DESC";
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, category);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BoardVO vo = new BoardVO();
+				vo.set_id(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setId(rs.getString(4));
+				vo.setDate(rs.getString(5));
+				vo.setReadcount(rs.getInt(7));
 				list.add(vo);
 			}
 		} catch (Exception e) {
@@ -129,5 +153,16 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public void readCount(int _id) {
+		String SQL = "UPDATE `daelimcafe2`.`board` SET `readcount` = readcount + 1 WHERE (`_id` = ?);";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, _id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
