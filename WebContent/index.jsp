@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="board.BoardVO" %>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -8,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Daelim CAFE</title>
 <link rel="stylesheet" href="./css/index.css" />
-<link rel="stylesheet" type="text/css" href="/css/font.css">
+<link rel="stylesheet" type="text/css" href="./css/font.css">
 </head>
 
 <body>
@@ -16,6 +19,10 @@
 		String session_userID = null;
 		if (session.getAttribute("userID") != null) {
 			session_userID = (String) session.getAttribute("userID");
+		}
+		int pageNumber = 1;
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
 	%>
 	<div class="bar1"></div>
@@ -112,94 +119,29 @@
 			</div>
 			<div class="list-Bar2"></div>
 			<table class="list-table">
+			<%
+				BoardDAO dao = new BoardDAO();
+				ArrayList<BoardVO> list = dao.getList(pageNumber);
+				for (int i = 0; i < list.size(); i++) {
+			%>
 				<tr class="list-table-tr">
-					<td class="list-table-number">1</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
+					<td class="list-table-number"><%=list.get(i).get_id()%></td>
+					<td class="list-table-title"><a href="post.jsp?_id=<%=list.get(i).get_id()%>"><%=list.get(i).getTitle()%></a></td>
+					<td class="list-table-writer"><%=list.get(i).getId()%></td>
+					<td class="list-table-date"><%=list.get(i).getDate()%></td>
 					<td class="list-table-look">0</td>
 				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">2</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">3</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">4</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">5</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">6</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">7</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">8</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">9</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
-				<tr class="list-table-tr">
-					<td class="list-table-number">10</td>
-					<td class="list-table-title"><a href="post.html">전체
-							게시판입니다.</a></td>
-					<td class="list-table-writer">아이디겸닉네임</td>
-					<td class="list-table-date">2020.09.20</td>
-					<td class="list-table-look">0</td>
-				</tr>
+			<%
+				}
+			%>
 			</table>
 
+			
 			<div class="pages">
 				<a href="#"><img src="./src/back.png" alt=""></a> <a href="#"
 					class="page-num" id="on">1</a> <a href="#" class="page-num">2</a> <a
 					href="#" class="page-num">3</a> <a href="#" class="page-num">4</a>
-				<a href="#" class="page-num">5</a> <a href="#"><img
-					src="./src/next.png" alt=""></a>
+				<a href="#" class="page-num">5</a> <a href="#"><img src="./src/next.png" alt=""></a>
 			</div>
 		</div>
 		<!--//list-->

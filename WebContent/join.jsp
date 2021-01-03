@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daelim CAFE</title>
     <link rel="stylesheet" href="./css/join.css" />
-    <link rel="stylesheet" type="text/css" href="/css/font.css">
+    <link rel="stylesheet" type="text/css" href="./css/font.css">
 </head>
 
 <body>

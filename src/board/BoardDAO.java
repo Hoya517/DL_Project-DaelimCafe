@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BoardDAO {
 	private Connection conn;
@@ -38,7 +39,7 @@ public class BoardDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "";  // db 오류
+		return "";
 	}
 	
 	public int insert(BoardVO vo) {
@@ -57,6 +58,76 @@ public class BoardDAO {
 			e.printStackTrace();
 		
 		}
-		return -1; //데이터 베이스 오류
+		return -1;
+	}
+	
+	public ArrayList<BoardVO> getList(int pageNumber) {
+		String SQL = "SELECT * FROM board ORDER BY _iD DESC";
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BoardVO vo = new BoardVO();
+				vo.set_id(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setId(rs.getString(4));
+				vo.setDate(rs.getString(5));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public BoardVO getBoard(int boardId) {
+		String SQL = "SELECT * FROM board WHERE _id = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, boardId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				BoardVO vo = new BoardVO();
+				vo.set_id(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setContent(rs.getString(3));
+				vo.setId(rs.getString(4));
+				vo.setDate(rs.getString(5));
+				vo.setCategory(rs.getString(6));
+				return vo;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int update(int boardId, String title, String category, String content) {
+		String SQL = "UPDATE board SET title = ?, category = ?, content = ? WHERE _id = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, title);
+			pstmt.setString(2, category);
+			pstmt.setString(3, content);
+			pstmt.setInt(4, boardId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return -1;  // db 오류
+	}
+	
+	public int delete(int boardId) {
+		String SQL = "DELETE FROM `daelimcafe2`.`board` WHERE (`_id` = ?);";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, boardId);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 }

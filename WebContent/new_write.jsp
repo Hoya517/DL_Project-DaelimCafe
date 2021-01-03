@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -8,11 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daelim CAFE</title>
     <link rel="stylesheet" href="./css/new_write.css" />
-    <link rel="stylesheet" type="text/css" href="/css/font.css">
+    <link rel="stylesheet" type="text/css" href="./css/font.css">
 	<script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
+	<% 
+		String session_userID = null;
+		if (session.getAttribute("userID") != null) {
+			session_userID = (String) session.getAttribute("userID");
+		}
+		if (session_userID == null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인 후 이용해주세요.')");
+			script.println("location.href = 'login.jsp'");
+			script.println("</script>");
+		}
+	%>
     <div class="bar1"></div>
     <div class="top">
         <div class="top-join">
@@ -23,7 +37,7 @@
     <div class="bar2"></div>
     <div class="banner">
         <div class="banner-text">
-            <span><a href="index.jsp">DAELIM UNIV.</a><span>
+            <span><a href="index.jsp">DAELIM UNIV.</a></span>
         </div>
     </div>
     <!--//banner-->
@@ -63,13 +77,13 @@
     <div class="footer">
         <div class="footer-cafename">DAELIM UNIV.</div>
     </div>
-    <script>
-	    ClassicEditor
-		    .create( document.querySelector( '#editor' ) )
-		    .catch( error => {
-		        console.error( error );
-		    } );
-    </script>
+	<script>
+	 ClassicEditor
+	  .create( document.querySelector( '#editor' ) )
+	  .catch( error => {
+	      console.error( error );
+	  } );
+	</script>
 </body>
 
 </html>
