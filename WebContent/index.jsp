@@ -28,7 +28,7 @@
 			<a href="join.jsp">회원가입</a>
 		</div>
 		<% } else { %>
-		<div class="top-login">
+		<div class="top-join">
 			<a href="logoutAction.jsp">로그아웃</a>
 		</div>
 		<% } %>
@@ -48,11 +48,19 @@
 			<div class="sidebar-Bar1"></div>
 			<div class="user">
 				<div class="user-pic"></div>
-				<div class="user-id">아이디겸닉네임</div>
+				<% if (session_userID == null) { %>
+					<div class="user-id">로그인 해주세요!</div>
+				<% } else { %>
+					<div class="user-id"><%=session.getAttribute("userID") %></div>
+				<% } %>
 			</div>
 			<div class="sidebar-bar1"></div>
 			<div class="sidebar-writebtn">
-				<a href="new_write.html">카페 글쓰기</a>
+				<% if (session_userID == null) { %>
+					<a href="login.jsp">카페 글쓰기</a>
+				<% } else { %>
+					<a href="new_write.jsp">카페 글쓰기</a>
+				<% } %>
 			</div>
 			<div class="sidebar-Bar2"></div>
 
