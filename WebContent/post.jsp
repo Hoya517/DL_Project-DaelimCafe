@@ -72,8 +72,8 @@
                 </div>
                 <div class="sidebar-bar2"></div>
                 <ul>
-                    <li><a href="read_notice.html">필독</a></li>
-                    <li><a href="cafe_notice.html">카페 공지</a></li>
+                    <li><a href="read_notice.jsp">필독</a></li>
+                    <li><a href="cafe_notice.jsp">카페 공지</a></li>
                 </ul>
             </div>
             <div class="sidebar-Bar3"></div>
@@ -85,10 +85,10 @@
                 </div>
                 <div class="sidebar-bar3"></div>
                 <ul>
-                    <li><a href="free_board.html">자유 게시판</a></li>
-                    <li><a href="freshman_board.html">새내기 게시판</a></li>
-                    <li><a href="class_board.html">강의평</a></li>
-                    <li><a href="foodstore_board.html">학교주변 맛집</a></li>
+                    <li><a href="free_board.jsp">자유 게시판</a></li>
+                    <li><a href="freshman_board.jsp">새내기 게시판</a></li>
+                    <li><a href="class_board.jsp">강의평</a></li>
+                    <li><a href="foodstore_board.jsp">학교주변 맛집</a></li>
                 </ul>
             </div>
             <div class="sidebar-Bar4"></div>
@@ -132,5 +132,4 @@
         <div class="footer-cafename">DAELIM UNIV.</div>
     </div>
 </body>
-
 </html>

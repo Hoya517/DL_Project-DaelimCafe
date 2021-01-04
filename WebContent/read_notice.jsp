@@ -35,7 +35,6 @@
 %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,7 +42,6 @@
 <link rel="stylesheet" href="./css/read_notice.css" />
 <link rel="stylesheet" type="text/css" href="./css/font.css">
 </head>
-
 <body>
 	<%
 		String session_userID = null;
@@ -214,8 +212,6 @@
 		</div>
 		<!--//list-->
 
-
-
 	</div>
 	<!--//container-->
 
@@ -224,5 +220,4 @@
 		<div class="footer-cafename">DAELIM UNIV.</div>
 	</div>
 </body>
-
 </html>

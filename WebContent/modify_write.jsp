@@ -5,7 +5,6 @@
 <%@ page import="board.BoardVO" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +14,6 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
 
 </head>
-
 <body>
 	<%
 		String session_userID = null;
@@ -80,8 +78,7 @@
 	        <div class="write-Bar"></div>
 	        <div class="write-title">
 				<input class="write-title-title" name="title" type="text"
-						value="<%= vo.getTitle() %>"
-				>
+						value="<%= vo.getTitle() %>">
 	        </div>
 	       	<div>
 	       		카테고리
@@ -117,5 +114,4 @@
 	  } );
 	</script>
 </body>
-
 </html>

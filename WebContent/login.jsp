@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,6 @@
 <link rel="stylesheet" href="./css/login.css" />
 <link rel="stylesheet" type="text/css" href="./css/font.css">
 </head>
-
 <body>
 	<div class="bar1"></div>
 	<div class="top">
@@ -54,5 +52,4 @@
 		<div class="footer-cafename">DAELIM UNIV.</div>
 	</div>
 </body>
-
 </html>

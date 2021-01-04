@@ -3,7 +3,6 @@
 <%@ page import="java.io.PrintWriter"%>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="./css/font.css">
 	<script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
 </head>
-
 <body>
 	<% 
 		String session_userID = null;
@@ -85,5 +83,4 @@
 	  } );
 	</script>
 </body>
-
 </html>

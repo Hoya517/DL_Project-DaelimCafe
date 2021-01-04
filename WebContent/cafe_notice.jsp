@@ -162,7 +162,7 @@
 					<td class="list-table-title"><a href="post.jsp?_id=<%=list.get(i).get_id()%>"><%=list.get(i).getTitle()%></a></td>
 					<td class="list-table-writer"><%=list.get(i).getId()%></td>
 					<td class="list-table-date"><%=list.get(i).getDate().substring(0, 11)%></td>
-					<td class="list-table-look">0</td>
+					<td class="list-table-look"><%=list.get(i).getReadcount() %></td>
 				</tr>
 			<%
 				}
