@@ -4,7 +4,7 @@
 <%@ page import="board.BoardVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%
-	int where = 1;
+int where = 1;
 int totalgroup = 0;
 int maxpages = 5;
 int startpage = 1;
@@ -163,7 +163,7 @@ int totalpages = 0;
 			<div class="list-Bar2"></div>
 			<table class="list-table">
 				<%
-					BoardDAO dao = new BoardDAO();
+				BoardDAO dao = new BoardDAO();
 				ArrayList<BoardVO> list = dao.getList("cafe_notice");
 				totalrows = list.size();
 				totalpages = (totalrows - 1) / maxrows + 1;

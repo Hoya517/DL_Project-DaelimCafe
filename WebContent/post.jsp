@@ -3,6 +3,9 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="board.BoardDAO"%>
 <%@ page import="board.BoardVO"%>
+<%
+BoardDAO dao = new BoardDAO();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -102,7 +105,7 @@
 		<!--//sidebar-->
 
 		<%
-			new BoardDAO().readCount(vo.get_id());
+			dao.readCount(vo.get_id());
 		%>
 		<div class="post">
 			<div class="post-title"><%=vo.getTitle()%></div>
@@ -135,7 +138,7 @@
 					} else {
 				%>
 				<div class="post-rewrite">
-					<a onclick="javascript:history.go(-1);">목록으로</a>
+					<a onclick="location.href = document.referrer;">목록으로</a>
 				</div>
 				<%
 					}

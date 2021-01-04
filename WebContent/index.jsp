@@ -163,7 +163,7 @@
 			<div class="list-Bar2"></div>
 			<table class="list-table">
 				<%
-					BoardDAO dao = new BoardDAO();
+				BoardDAO dao = new BoardDAO();
 				ArrayList<BoardVO> list = dao.getList();
 				totalrows = list.size();
 				totalpages = (totalrows - 1) / maxrows + 1;
