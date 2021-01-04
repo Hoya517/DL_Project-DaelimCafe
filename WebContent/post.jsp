@@ -3,9 +3,6 @@
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="board.BoardDAO"%>
 <%@ page import="board.BoardVO"%>
-<%
-BoardDAO dao = new BoardDAO();
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -105,7 +102,7 @@ BoardDAO dao = new BoardDAO();
 		<!--//sidebar-->
 
 		<%
-			dao.readCount(vo.get_id());
+			new BoardDAO().readCount(vo.get_id());
 		%>
 		<div class="post">
 			<div class="post-title"><%=vo.getTitle()%></div>
