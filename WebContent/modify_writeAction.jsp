@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="board.BoardDAO" %>
-<%@ page import="board.BoardVO" %>
-<%@ page import="java.io.PrintWriter" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="board.BoardDAO"%>
+<%@ page import="board.BoardVO"%>
+<%@ page import="java.io.PrintWriter"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
 	String title = request.getParameter("title");
@@ -16,7 +16,7 @@
 <title>Daelim CAFE</title>
 </head>
 <body>
-<%
+	<%
 	String session_userID = null;
 	if (session.getAttribute("userID") != null) {
 		session_userID = (String) session.getAttribute("userID");
@@ -47,7 +47,7 @@
 		script.println("location.href = 'index.jsp'");
 		script.println("</script>");
 	} else {
-		if(title == null || content == null )	// 글제목, 글내용 미작성시
+		if(title == null || content == null )
 		{
 			PrintWriter script = response.getWriter();
 			script.println("<script>");

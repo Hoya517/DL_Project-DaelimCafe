@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="board.BoardDAO" %>
-<%@ page import="board.BoardVO" %>
+<%@ page import="board.BoardDAO"%>
+<%@ page import="board.BoardVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%
 	int where=1;
@@ -21,7 +21,6 @@
    		where = startpage ; 
    		endpage=startpage+maxpages-1; 
   	}
-	
   	int nextgroup=wheregroup+1;
   	int priorgroup= wheregroup-1;  
   	
@@ -82,17 +81,17 @@
 			<div class="user">
 				<div class="user-pic"></div>
 				<% if (session_userID == null) { %>
-					<div class="user-id">로그인 해주세요!</div>
+				<div class="user-id">로그인 해주세요!</div>
 				<% } else { %>
-					<div class="user-id"><%=session.getAttribute("userID") %></div>
+				<div class="user-id"><%=session.getAttribute("userID") %></div>
 				<% } %>
 			</div>
 			<div class="sidebar-bar1"></div>
 			<div class="sidebar-writebtn">
 				<% if (session_userID == null) { %>
-					<a href="login.jsp">카페 글쓰기</a>
+				<a href="login.jsp">카페 글쓰기</a>
 				<% } else { %>
-					<a href="new_write.jsp">카페 글쓰기</a>
+				<a href="new_write.jsp">카페 글쓰기</a>
 				<% } %>
 			</div>
 			<div class="sidebar-Bar2"></div>
@@ -145,7 +144,7 @@
 			</div>
 			<div class="list-Bar2"></div>
 			<table class="list-table">
-			<%
+				<%
 				BoardDAO dao = new BoardDAO();
 				ArrayList<BoardVO> list = dao.getList("freshman_board");
 				totalrows = list.size();
@@ -159,12 +158,13 @@
 			%>
 				<tr class="list-table-tr">
 					<td class="list-table-number"><%=list.get(i).get_id()%></td>
-					<td class="list-table-title"><a href="post.jsp?_id=<%=list.get(i).get_id()%>"><%=list.get(i).getTitle()%></a></td>
+					<td class="list-table-title"><a
+						href="post.jsp?_id=<%=list.get(i).get_id()%>"><%=list.get(i).getTitle()%></a></td>
 					<td class="list-table-writer"><%=list.get(i).getId()%></td>
 					<td class="list-table-date"><%=list.get(i).getDate().substring(0, 11)%></td>
 					<td class="list-table-look"><%=list.get(i).getReadcount() %></td>
 				</tr>
-			<%
+				<%
 				}
 			%>
 			</table>
@@ -172,49 +172,47 @@
 				
 			%>
 			<div class="pages">
-			<%
+				<%
 			if(wheregroup > 1) {
 	    	%>
-	    		<a href="index.jsp?go=1">&lt;&lt;</a>
-	    		<a href="index.jsp?gogroup=<%=priorgroup%>"><img src="./src/back.png" alt=""></a>
-	    	<%
+				<a href="index.jsp?go=1">&lt;&lt;</a> <a
+					href="index.jsp?gogroup=<%=priorgroup%>"><img
+					src="./src/back.png" alt=""></a>
+				<%
 	    	} else {
     		%>
-    			<a>&lt;&lt;</a>
-	    		<a><img src="./src/back.png" alt=""></a>
-	    	<%
+				<a>&lt;&lt;</a> <a><img src="./src/back.png" alt=""></a>
+				<%
 	    	}
 			
 	    	for(int jj=startpage; jj<=endpage; jj++) {
 	    		if (jj==where) {
 	   		%>
-	   		    <a class="page-num" id="on"><%= jj %></a>
-		    <%
+				<a class="page-num" id="on"><%= jj %></a>
+				<%
 		    	} else {
 		    %>
-		    	<a href="index.jsp?go=<%=jj %>" class="page-num"><%= jj %></a>
-		    <%	   
+				<a href="index.jsp?go=<%=jj %>" class="page-num"><%= jj %></a>
+				<%	   
 		    	}
 	    	}
 		    %>
-		    <%	 
+				<%	 
 	    	if (wheregroup < totalgroup) {
 	    	%>
-    			<a href="index.jsp?gogroup=<%=nextgroup %>"><img src="./src/next.png" alt=""></a>
-    			<a href="index.jsp?gogroup=<%=totalgroup %>">&gt;&gt;</a>
-		    <%	 	
+				<a href="index.jsp?gogroup=<%=nextgroup %>"><img
+					src="./src/next.png" alt=""></a> <a
+					href="index.jsp?gogroup=<%=totalgroup %>">&gt;&gt;</a>
+				<%	 	
 	    	} else {
 	    	%>
-    			<a><img src="./src/next.png" alt=""></a>
-    			<a>&gt;&gt;</a>
-		    <% 
+				<a><img src="./src/next.png" alt=""></a> <a>&gt;&gt;</a>
+				<% 
 	    	}
 			%>
 			</div>
 		</div>
 		<!--//list-->
-
-
 
 	</div>
 	<!--//container-->

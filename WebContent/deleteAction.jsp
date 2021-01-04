@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="board.BoardDAO" %>
-<%@ page import="board.BoardVO" %>
-<%@ page import="java.io.PrintWriter" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="board.BoardDAO"%>
+<%@ page import="board.BoardVO"%>
+<%@ page import="java.io.PrintWriter"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@
 <title>Daelim CAFE</title>
 </head>
 <body>
-<%
+	<%
 	String session_userID = null;
 	if (session.getAttribute("userID") != null) {
 		session_userID = (String) session.getAttribute("userID");

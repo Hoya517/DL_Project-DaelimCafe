@@ -27,7 +27,7 @@
 				<div class="bar3"></div>
 				<div class="login-box">
 					<p>
-						<label for="id" >아이디</label>
+						<label for="id">아이디</label>
 					</p>
 					<div class="box-login">
 						<input type="text" name="userID" maxlength="20">
