@@ -9,8 +9,7 @@
 <title>Daelim CAFE</title>
 <link rel="stylesheet" href="./css/new_write.css" />
 <link rel="stylesheet" type="text/css" href="./css/font.css">
-<script
-	src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 </head>
 <body>
 	<%
@@ -63,6 +62,11 @@
 			</div>
 			<div class="wirte-editor">
 				<textarea name="content" id="editor"></textarea>
+				<script type="text/javascript">
+				 CKEDITOR.replace('editor'
+				                , {height: 500                                                  
+				                 });
+				</script>
 			</div>
 			<div class="wirte-btn">
 				<div class="wirte-cancel">
@@ -81,12 +85,5 @@
 	<div class="footer">
 		<div class="footer-cafename">DAELIM UNIV.</div>
 	</div>
-	<script>
-	 ClassicEditor
-	  .create( document.querySelector( '#editor' ) )
-	  .catch( error => {
-	      console.error( error );
-	  } );
-	</script>
 </body>
 </html>
