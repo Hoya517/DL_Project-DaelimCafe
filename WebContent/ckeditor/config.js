@@ -38,7 +38,7 @@ CKEDITOR.editorConfig = function( config ) {
 	
 	config.filebrowserBrowseUrl = "/DaelimCafe/ckfinder/ckfinder.html";
     config.filebrowserFlashBrowseUrl = "/DaelimCafe/ckfinder/ckfinder.html?type=Flash";
-    config.filebrowserUploadUrl = "/DaelimCafe/ckfinder/core/connector/java/connctor.java?command=QuickUpload&type=Files";
+    config.filebrowserUploadUrl = "/DaelimCafe/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Files";
     config.filebrowserImageUploadUrl = "/DaelimCafe/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Images";
     config.filebrowserFlashUploadUrl = "/DaelimCafe/ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash";
 };

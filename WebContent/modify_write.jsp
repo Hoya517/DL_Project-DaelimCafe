@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="./css/modify_write.css" />
 <link rel="stylesheet" type="text/css" href="./css/font.css">
 <script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
-
 </head>
 <body>
 	<%

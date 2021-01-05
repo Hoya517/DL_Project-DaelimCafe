@@ -59,11 +59,11 @@
 			<div class="sidebar-Bar1"></div>
 			<div class="user">
 				<div class="user-pic"></div>
-				<div class="user-id">아이디겸닉네임</div>
+				<div class="user-id"><%=session.getAttribute("userID")%></div>
 			</div>
 			<div class="sidebar-bar1"></div>
 			<div class="sidebar-writebtn">
-				<a href="new_write.html">카페 글쓰기</a>
+				<a href="new_write.jsp">카페 글쓰기</a>
 			</div>
 			<div class="sidebar-Bar2"></div>
 
