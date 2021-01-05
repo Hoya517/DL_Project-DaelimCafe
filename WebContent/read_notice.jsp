@@ -43,7 +43,7 @@ int totalpages = 0;
 </head>
 <body>
 	<%
-		String session_userID = null;
+	String session_userID = null;
 	if (session.getAttribute("userID") != null) {
 		session_userID = (String) session.getAttribute("userID");
 	}

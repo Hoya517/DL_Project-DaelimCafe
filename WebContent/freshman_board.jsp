@@ -4,33 +4,33 @@
 <%@ page import="board.BoardVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%
-	int where=1;
-  	int totalgroup=0;
-  	int maxpages=5;
-	int startpage=1;	
-	int endpage=startpage+maxpages-1;
-	int wheregroup=1;
-	if (request.getParameter("go") != null){ 	
-  		where = Integer.parseInt(request.getParameter("go"));
- 		wheregroup = (where-1)/maxpages + 1;
-		startpage=(wheregroup-1) * maxpages+1;  
-		endpage=startpage+maxpages-1; 
-	} else if (request.getParameter("gogroup") != null) {
-  		wheregroup = Integer.parseInt(request.getParameter("gogroup"));
-   		startpage=(wheregroup-1) * maxpages+1;  
-   		where = startpage ; 
-   		endpage=startpage+maxpages-1; 
-  	}
-  	int nextgroup=wheregroup+1;
-  	int priorgroup= wheregroup-1;  
-  	
-  	int nextpage=where+1;
-  	int priorpage = where-1;
-  	int startrow=0;
-	int endrow=0;
-	int maxrows=10;
-	int totalrows=0;
-	int totalpages=0;
+int where = 1;
+int totalgroup = 0;
+int maxpages = 5;
+int startpage = 1;
+int endpage = startpage + maxpages - 1;
+int wheregroup = 1;
+if (request.getParameter("go") != null) {
+	where = Integer.parseInt(request.getParameter("go"));
+	wheregroup = (where - 1) / maxpages + 1;
+	startpage = (wheregroup - 1) * maxpages + 1;
+	endpage = startpage + maxpages - 1;
+} else if (request.getParameter("gogroup") != null) {
+	wheregroup = Integer.parseInt(request.getParameter("gogroup"));
+	startpage = (wheregroup - 1) * maxpages + 1;
+	where = startpage;
+	endpage = startpage + maxpages - 1;
+}
+int nextgroup = wheregroup + 1;
+int priorgroup = wheregroup - 1;
+
+int nextpage = where + 1;
+int priorpage = where - 1;
+int startrow = 0;
+int endrow = 0;
+int maxrows = 10;
+int totalrows = 0;
+int totalpages = 0;
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -45,25 +45,31 @@
 
 <body>
 	<%
-		String session_userID = null;
-		if (session.getAttribute("userID") != null) {
-			session_userID = (String) session.getAttribute("userID");
-		}
+	String session_userID = null;
+	if (session.getAttribute("userID") != null) {
+		session_userID = (String) session.getAttribute("userID");
+	}
 	%>
 	<div class="bar1"></div>
 	<div class="top">
-		<% if (session_userID == null) { %>
+		<%
+			if (session_userID == null) {
+		%>
 		<div class="top-login">
 			<a href="login.jsp">로그인</a>
 		</div>
 		<div class="top-join">
 			<a href="join.jsp">회원가입</a>
 		</div>
-		<% } else { %>
+		<%
+			} else {
+		%>
 		<div class="top-join">
 			<a href="logoutAction.jsp">로그아웃</a>
 		</div>
-		<% } %>
+		<%
+			}
+		%>
 	</div>
 	<!--//top-->
 	<div class="bar2"></div>
@@ -80,19 +86,31 @@
 			<div class="sidebar-Bar1"></div>
 			<div class="user">
 				<div class="user-pic"></div>
-				<% if (session_userID == null) { %>
+				<%
+					if (session_userID == null) {
+				%>
 				<div class="user-id">로그인 해주세요!</div>
-				<% } else { %>
-				<div class="user-id"><%=session.getAttribute("userID") %></div>
-				<% } %>
+				<%
+					} else {
+				%>
+				<div class="user-id"><%=session.getAttribute("userID")%></div>
+				<%
+					}
+				%>
 			</div>
 			<div class="sidebar-bar1"></div>
 			<div class="sidebar-writebtn">
-				<% if (session_userID == null) { %>
+				<%
+					if (session_userID == null) {
+				%>
 				<a href="login.jsp">카페 글쓰기</a>
-				<% } else { %>
+				<%
+					} else {
+				%>
 				<a href="new_write.jsp">카페 글쓰기</a>
-				<% } %>
+				<%
+					}
+				%>
 			</div>
 			<div class="sidebar-Bar2"></div>
 
@@ -131,7 +149,7 @@
 		<!--//sidebar-->
 
 		<div class="list">
-			<div class="list-name">필독</div>
+			<div class="list-name">새내기 게시판</div>
 			<div class="list-Bar"></div>
 			<div class="list-title">
 				<ul>
@@ -148,68 +166,70 @@
 				BoardDAO dao = new BoardDAO();
 				ArrayList<BoardVO> list = dao.getList("freshman_board");
 				totalrows = list.size();
-			    totalpages = (totalrows-1)/maxrows +1;
-			    startrow = (where-1) * maxrows;
-			    endrow = startrow+maxrows-1  ;
-			    if (endrow >= totalrows) endrow=totalrows-1;
-			    totalgroup = (totalpages-1)/maxpages +1;
-			    if (endpage > totalpages) endpage=totalpages;
+				totalpages = (totalrows - 1) / maxrows + 1;
+				startrow = (where - 1) * maxrows;
+				endrow = startrow + maxrows - 1;
+				if (endrow >= totalrows)
+					endrow = totalrows - 1;
+				totalgroup = (totalpages - 1) / maxpages + 1;
+				if (endpage > totalpages)
+					endpage = totalpages;
 				for (int i = startrow; i <= endrow; i++) {
-			%>
+				%>
 				<tr class="list-table-tr">
 					<td class="list-table-number"><%=list.get(i).get_id()%></td>
 					<td class="list-table-title"><a
 						href="post.jsp?_id=<%=list.get(i).get_id()%>"><%=list.get(i).getTitle()%></a></td>
 					<td class="list-table-writer"><%=list.get(i).getId()%></td>
 					<td class="list-table-date"><%=list.get(i).getDate().substring(0, 11)%></td>
-					<td class="list-table-look"><%=list.get(i).getReadcount() %></td>
+					<td class="list-table-look"><%=list.get(i).getReadcount()%></td>
 				</tr>
 				<%
-				}
-			%>
+					}
+				%>
 			</table>
 			<%
 				
 			%>
 			<div class="pages">
 				<%
-			if(wheregroup > 1) {
-	    	%>
+					if (wheregroup > 1) {
+				%>
 				<a href="index.jsp?go=1">&lt;&lt;</a> <a
 					href="index.jsp?gogroup=<%=priorgroup%>"><img
 					src="./src/back.png" alt=""></a>
 				<%
-	    	} else {
-    		%>
+					} else {
+				%>
 				<a>&lt;&lt;</a> <a><img src="./src/back.png" alt=""></a>
 				<%
-	    	}
-			
-	    	for(int jj=startpage; jj<=endpage; jj++) {
-	    		if (jj==where) {
-	   		%>
-				<a class="page-num" id="on"><%= jj %></a>
+					}
+
+				for (int jj = startpage; jj <= endpage; jj++) {
+					if (jj == where) {
+				%>
+				<a class="page-num" id="on"><%=jj%></a>
 				<%
-		    	} else {
-		    %>
-				<a href="index.jsp?go=<%=jj %>" class="page-num"><%= jj %></a>
-				<%	   
-		    	}
-	    	}
-		    %>
-				<%	 
-	    	if (wheregroup < totalgroup) {
-	    	%>
-				<a href="index.jsp?gogroup=<%=nextgroup %>"><img
+					} else {
+				%>
+				<a href="index.jsp?go=<%=jj%>" class="page-num"><%=jj%></a>
+				<%
+					}
+				}
+				%>
+				<%
+					if (wheregroup < totalgroup) {
+				%>
+				<a href="index.jsp?gogroup=<%=nextgroup%>"><img
 					src="./src/next.png" alt=""></a> <a
-					href="index.jsp?gogroup=<%=totalgroup %>">&gt;&gt;</a>
-				<%	 	
-	    	} else {
-	    	%>
+					href="index.jsp?gogroup=<%=totalgroup%>">&gt;&gt;</a>
+				<%
+					} else {
+				%>
 				<a><img src="./src/next.png" alt=""></a> <a>&gt;&gt;</a>
-				<% 
-	    	}
-			%>
+				<%
+					}
+				%>
 			</div>
 		</div>
 		<!--//list-->

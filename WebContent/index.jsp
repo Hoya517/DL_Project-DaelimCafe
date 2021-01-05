@@ -4,33 +4,33 @@
 <%@ page import="board.BoardVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%
-	int where = 1;
-	int totalgroup = 0;
-	int maxpages = 5;
-	int startpage = 1;
-	int endpage = startpage + maxpages - 1;
-	int wheregroup = 1;
-	if (request.getParameter("go") != null) {
-		where = Integer.parseInt(request.getParameter("go"));
-		wheregroup = (where - 1) / maxpages + 1;
-		startpage = (wheregroup - 1) * maxpages + 1;
-		endpage = startpage + maxpages - 1;
-	} else if (request.getParameter("gogroup") != null) {
-		wheregroup = Integer.parseInt(request.getParameter("gogroup"));
-		startpage = (wheregroup - 1) * maxpages + 1;
-		where = startpage;
-		endpage = startpage + maxpages - 1;
-	}
-	int nextgroup = wheregroup + 1;
-	int priorgroup = wheregroup - 1;
-	
-	int nextpage = where + 1;
-	int priorpage = where - 1;
-	int startrow = 0;
-	int endrow = 0;
-	int maxrows = 10;
-	int totalrows = 0;
-	int totalpages = 0;
+int where = 1;
+int totalgroup = 0;
+int maxpages = 5;
+int startpage = 1;
+int endpage = startpage + maxpages - 1;
+int wheregroup = 1;
+if (request.getParameter("go") != null) {
+	where = Integer.parseInt(request.getParameter("go"));
+	wheregroup = (where - 1) / maxpages + 1;
+	startpage = (wheregroup - 1) * maxpages + 1;
+	endpage = startpage + maxpages - 1;
+} else if (request.getParameter("gogroup") != null) {
+	wheregroup = Integer.parseInt(request.getParameter("gogroup"));
+	startpage = (wheregroup - 1) * maxpages + 1;
+	where = startpage;
+	endpage = startpage + maxpages - 1;
+}
+int nextgroup = wheregroup + 1;
+int priorgroup = wheregroup - 1;
+
+int nextpage = where + 1;
+int priorpage = where - 1;
+int startrow = 0;
+int endrow = 0;
+int maxrows = 10;
+int totalrows = 0;
+int totalpages = 0;
 %>
 <!DOCTYPE html>
 <html lang="ko">

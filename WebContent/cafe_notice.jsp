@@ -149,7 +149,7 @@ int totalpages = 0;
 		<!--//sidebar-->
 
 		<div class="list">
-			<div class="list-name">필독</div>
+			<div class="list-name">카페 공지</div>
 			<div class="list-Bar"></div>
 			<div class="list-title">
 				<ul>
